@@ -1,0 +1,11 @@
+{
+  "people": [
+    {
+      "id": "K11",
+      "name": "Michael Bennett",
+      "title": "Group Technical Director"
+    },
+    { "id": "L26", "name": "Chris Seifert", "title": "Technical Director" },
+    { "id": "L27", "name": "Luke Corrigall", "title": "Technical Director" }
+  ]
+}
