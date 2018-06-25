@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   imageUrl: string;
   origImageHeight: number;
   origImageWidth: number;
+  title = 'app';
 
   constructor(private peopleService: PeopleService) {
     this.imageUrl = '/assets/img/map6thFloor.jpg';
