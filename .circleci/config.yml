@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/rangle-seatmap-poc
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout
       - run: npm install
