@@ -1,0 +1,8 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/rangle-seatmap-poc
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
