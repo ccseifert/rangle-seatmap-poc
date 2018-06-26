@@ -1,12 +1,13 @@
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PeopleService {
   url = 'assets/json/people.json';
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   getData() {
     return this.http
