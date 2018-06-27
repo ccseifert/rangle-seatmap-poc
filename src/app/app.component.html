@@ -1,5 +1,10 @@
-<div *ngFor="let person of peopleData">{{ person.name }}</div>
 <div id="map">
-  <img src="{{ imageUrl }}" alt="">
-  <div class="person"></div>
+  <img src="{{ imageUrl }}" alt="" height="{{ imageHeight }}" width="{{ imageWidth }}">
+  <app-marker
+    *ngFor="let seat of seatData"
+    [seat]="seat"
+    [person]="getPerson(seat.id)"
+    [mapScale]="mapScale"
+    [markerRadius]="markerRadius"
+  ></app-marker>
 </div>

@@ -1,0 +1,21 @@
+.marker {
+  position: absolute;
+  background-color: orange;
+  color: orange;
+  border-radius: 100%;
+}
+
+.person {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: white;
+  padding: 1em;
+}
+
+.person h1, .person h2 {
+  margin: 0;
+}

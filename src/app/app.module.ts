@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PeopleService } from './people.service';
+import { MarkerComponent } from './marker/marker.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MarkerComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [PeopleService],
   bootstrap: [AppComponent],

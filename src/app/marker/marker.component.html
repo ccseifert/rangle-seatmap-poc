@@ -1,0 +1,24 @@
+<div
+  class="marker"
+  (mouseenter)="onMouseEnter(person.id, $event)"
+  (mouseleave)="onMouseLeave()"
+  [ngStyle]="{
+    'top.px': (seat.y * mapScale),
+    'left.px': (seat.x * mapScale),
+    'height.px': (markerRadius * mapScale),
+    'width.px': (markerRadius * mapScale)
+  }">
+</div>
+<div
+  #thisPerson
+  id="person{{person.id}}"
+  class="person"
+  *ngIf="showPerson === person.id"
+  [ngStyle]="{
+    'top.px': showPersonY,
+    'left.px': showPersonX
+  }">
+  <h1>{{ person.name }}</h1>
+  <h2>{{ person.title }}</h2>
+  <h3>{{ person.email }}</h3>
+</div>
