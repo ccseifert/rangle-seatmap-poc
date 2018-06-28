@@ -18,23 +18,23 @@ export class AppComponent implements OnInit {
   imageHeight: number;
   mapScale: number;
 
-  constructor(private peopleService: PeopleService) {
+  constructor(private peopleService: PeopleService) {}
+
+  ngOnInit() {
     this.imageUrl = '/assets/img/map6thFloor.jpg';
     this.imageHeight = this.imageWidth * this.imageScale;
     this.mapScale = this.imageWidth / 1000;
 
-    // get people data
-    this.peopleService.getData().subscribe(data => {
-      this.peopleData = data['people'];
-    });
-  }
-
-  ngOnInit() {
     // var image = new Image();
     // image.addEventListener('load', e => this.handleImageLoad(e));
     // image.src = this.imageUrl;
     // this.currentImageHeight = image.height;
     // this.currentImageWidth = image.width;
+
+    // get people data
+    this.peopleService.getData().subscribe(data => {
+      this.peopleData = data['people'];
+    });
 
     // get seat data
     this.peopleService.getData().subscribe(data => {
