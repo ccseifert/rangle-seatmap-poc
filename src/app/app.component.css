@@ -10,3 +10,37 @@
   max-height: 100%; */
   border: 1px solid black;
 }
+
+.person {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: white;
+  padding: 1em;
+}
+
+.person img {
+  max-height: 100%;
+  position: relative;
+  float: left;
+}
+
+.person .details {
+  float: left;
+  margin-left: 1rem;
+}
+
+.person h1, .person h2 {
+  margin: 0;
+}
+
+#personClose {
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

@@ -10,6 +10,7 @@ import { Seat } from './seat.model';
 })
 export class AppComponent implements OnInit {
   peopleData: Person[];
+  person: Person;
   seatData: Seat[];
   imageUrl: string;
   imageScale = 0.785;
@@ -17,19 +18,28 @@ export class AppComponent implements OnInit {
   imageWidth = 1000;
   imageHeight: number;
   mapScale: number;
+  showPerson = false;
+  personX = 235;
+  personY = 368;
+  personHeight = 120;
+  personWidth = 440;
+  personImageUrl = '';
+  personImagePath = '/assets/img/';
+  imageDefaultWidth = 100;
 
   constructor(private peopleService: PeopleService) {}
 
   ngOnInit() {
+    // set map image
     this.imageUrl = '/assets/img/map6thFloor.jpg';
+
+    // set dimensions based on map image width
     this.imageHeight = this.imageWidth * this.imageScale;
     this.mapScale = this.imageWidth / 1000;
-
-    // var image = new Image();
-    // image.addEventListener('load', e => this.handleImageLoad(e));
-    // image.src = this.imageUrl;
-    // this.currentImageHeight = image.height;
-    // this.currentImageWidth = image.width;
+    this.personX = this.personX * this.mapScale;
+    this.personY = this.personY * this.mapScale;
+    this.personHeight = this.personHeight * this.mapScale;
+    this.personWidth = this.personWidth * this.mapScale;
 
     // get people data
     this.peopleService.getData().subscribe(data => {
@@ -46,8 +56,25 @@ export class AppComponent implements OnInit {
     return this.peopleData.find(person => person.id === id);
   }
 
-  // handleImageLoad(event): void {
-  //   this.imageWidth = event.target.width;
-  //   this.imageHeight = event.target.height;
-  // }
+  onNotify(id: string) {
+    this.person = this.getPerson(id);
+
+    this.personImageUrl =
+      this.personImagePath +
+      'people/' +
+      this.person.email.replace('@rangle.io', '') +
+      '.jpg';
+
+    this.showPerson = true;
+  }
+
+  updateUrl() {
+    this.personImageUrl = this.personImagePath + 'generic_person.png';
+  }
+
+  closePerson() {
+    this.showPerson = false;
+    this.person = null;
+    this.personImageUrl = null;
+  }
 }
