@@ -1,0 +1,18 @@
+<div id="map">
+  <img src="{{ imageUrl }}" alt="" height="{{ imageHeight }}" width="{{ imageWidth }}">
+  <app-marker
+    *ngFor="let seat of seatData"
+    [seat]="seat"
+    [person]="getPerson(seat.id)"
+    [mapScale]="mapScale"
+    (notify)="onNotify($event)"
+  ></app-marker>
+  <app-person-card
+    *ngIf="showPerson"
+    [person]="person"
+    [mapScale]="mapScale"
+    [imagePath]="imagePath"
+    [map]="map"
+    (notify)="closePerson()"
+  ></app-person-card>
+</div>

@@ -1,0 +1,8 @@
+#map {
+  position: absolute;
+  top: 100px;
+}
+
+#map img {
+  border: 1px solid black;
+}

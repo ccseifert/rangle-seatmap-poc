@@ -1,0 +1,50 @@
+{
+  "maps": [
+    {
+      "id": 5,
+      "path": "/5th-floor",
+      "file": "map5thFloor.jpg",
+      "personCardX": 235,
+      "personCardY": 369,
+      "personCardHeight": 120,
+      "personCardWidth": 440
+    },
+    {
+      "id": 6,
+      "path": "/6th-floor",
+      "file": "map6thFloor.jpg",
+      "personCardX": 235,
+      "personCardY": 369,
+      "personCardHeight": 120,
+      "personCardWidth": 440
+    }
+  ],
+  "seats": [
+    { "id": "K11", "x": 637, "y": 537 },
+    { "id": "L26", "x": 268, "y": 583 },
+    { "id": "L27", "x": 268, "y": 603 }
+  ],
+  "people": [
+    {
+      "id": "K11",
+      "name": "Michael Bennett",
+      "title": "Group Technical Director",
+      "email": "michael.bennett@rangle.io",
+      "image": "michael.bennett.jpg"
+    },
+    {
+      "id": "L26",
+      "name": "Chris Seifert",
+      "title": "Technical Director",
+      "email": "chris.seifert@rangle.io",
+      "image": "chris.seifert.jpg"
+    },
+    {
+      "id": "L27",
+      "name": "Luke Corrigall",
+      "title": "Technical Director",
+      "email": "luke.corrigall@rangle.io",
+      "image": "luke.corrigall.jpg"
+    }
+  ]
+}

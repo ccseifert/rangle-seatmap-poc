@@ -11,8 +11,8 @@ export class MarkerComponent implements OnInit {
   @Input() seat: Seat;
   @Input() person: Person;
   @Input() mapScale: number;
-  @Input() markerRadius: number;
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  markerRadius = 18;
 
   constructor() {}
 

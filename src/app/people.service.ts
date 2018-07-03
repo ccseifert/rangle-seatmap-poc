@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class PeopleService {
-  url = 'assets/json/people.json';
+  url = 'assets/json/seatmap.json';
 
   constructor(private http: HttpClient) {}
 
