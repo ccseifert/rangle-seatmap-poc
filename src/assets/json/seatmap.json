@@ -30,28 +30,32 @@
   "people": [
     {
       "id": "K11",
-      "name": "Michael Bennett",
+      "firstname": "Michael",
+      "lastname": "Bennett",
       "title": "Group Technical Director",
       "email": "michael.bennett@rangle.io",
       "image": "michael.bennett.jpg"
     },
     {
       "id": "L26",
-      "name": "Chris Seifert",
+      "firstname": "Chris",
+      "lastname": "Seifert",
       "title": "Technical Director",
       "email": "chris.seifert@rangle.io",
       "image": "chris.seifert.jpg"
     },
     {
       "id": "L27",
-      "name": "Luke Corrigall",
+      "firstname": "Luke",
+      "lastname": "Corrigall",
       "title": "Technical Director",
       "email": "luke.corrigall@rangle.io",
       "image": "luke.corrigall.jpg"
     },
     {
       "id": "D5",
-      "name": "Gus Oregel",
+      "firstname": "Gus",
+      "lastname": "Oregel",
       "title": "Product Designer",
       "email": "gus.oregel@rangle.io",
       "image": "gus.oregel.jpg"
