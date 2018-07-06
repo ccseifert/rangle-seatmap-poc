@@ -24,7 +24,8 @@
     "floor6": [
       { "id": "K11", "x": 637, "y": 537 },
       { "id": "L26", "x": 268, "y": 583 },
-      { "id": "L27", "x": 268, "y": 603 }
+      { "id": "L27", "x": 268, "y": 603 },
+      { "id": "L28", "x": 268, "y": 628 }
     ]
   },
   "people": [
@@ -59,6 +60,14 @@
       "title": "Product Designer",
       "email": "gus.oregel@rangle.io",
       "image": "gus.oregel.jpg"
+    },
+    {
+      "id": "L28",
+      "firstname": "Andrew",
+      "lastname": "Thauer",
+      "title": "Technical Director",
+      "email": "andrew.thauer@rangle.io",
+      "image": "andrew.thauer.png"
     }
   ]
 }
