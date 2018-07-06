@@ -7,12 +7,24 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  height: 100px;
 }
 
 li {
-  display: inline;
+  float: left;
 }
 
 a {
   padding: 1rem;
+  text-decoration: none;
+  color: navy;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: maroon;
+}
+
+.nav-right {
+  float: right;
 }

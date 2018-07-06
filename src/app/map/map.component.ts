@@ -16,19 +16,13 @@ export class MapComponent implements OnInit {
   seatData: Seat[];
   mapData: Map[];
   map: Map;
-  mapFilename: string;
   imageUrl: string;
   imageScale = 0.785;
   imageWidth = 1000;
   imageHeight: number;
   mapScale: number;
-  personX: number;
-  personY: number;
-  personHeight: number;
-  personWidth: number;
   showPerson = false;
   imagePath = '/assets/img/';
-  imageDefaultWidth = 100;
 
   constructor(private peopleService: PeopleService, private router: Router) {}
 
@@ -37,10 +31,10 @@ export class MapComponent implements OnInit {
     this.peopleService.getData().subscribe(data => {
       this.mapData = data['maps'];
       this.map = this.mapData.find(m => m.path === this.router.url);
-      this.mapFilename = this.map.file;
+      const mapFilename = this.map.file;
 
       // set map image
-      this.imageUrl = this.imagePath + this.mapFilename;
+      this.imageUrl = this.imagePath + mapFilename;
 
       // set dimensions based on map image width
       this.imageHeight = this.imageWidth * this.imageScale;
@@ -54,7 +48,7 @@ export class MapComponent implements OnInit {
 
     // get seat data
     this.peopleService.getData().subscribe(data => {
-      this.seatData = data['seats'];
+      this.seatData = data['seats']['floor' + this.map.id];
     });
   }
 
