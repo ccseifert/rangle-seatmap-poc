@@ -9,9 +9,11 @@ import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app.routing-module';
 import { HeaderComponent } from './header/header.component';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { SearchComponent } from './search/search.component';
+import { UserImageComponent } from './user-image/user-image.component';
 
 @NgModule({
-  declarations: [AppComponent, MarkerComponent, MapComponent, HeaderComponent, PersonCardComponent],
+  declarations: [AppComponent, MarkerComponent, MapComponent, HeaderComponent, PersonCardComponent, SearchComponent, UserImageComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [PeopleService],
   bootstrap: [AppComponent],

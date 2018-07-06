@@ -1,0 +1,18 @@
+<div
+  id="search-container"
+  *ngIf="showSearch2"
+  >
+
+  <!-- Overlay content -->
+  <div id="search-box">
+
+    <div class="person" *ngFor="let person of peopleData">
+      <app-user-image [image]="person.image"></app-user-image>
+      <a style="cursor: pointer;">{{ person.firstname }} {{ person.lastname }}</a>
+    </div>
+
+    <div id="searchClose" (click)="closeSearch()">X</div>
+
+  </div>
+
+</div>

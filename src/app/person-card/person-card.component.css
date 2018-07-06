@@ -10,12 +10,6 @@
   padding: 1em;
 }
 
-.person img {
-  max-height: 100%;
-  position: relative;
-  float: left;
-}
-
 .person .details {
   float: left;
   margin-left: 1rem;

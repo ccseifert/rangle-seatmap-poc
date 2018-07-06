@@ -4,6 +4,7 @@ import { Person } from '../person.model';
 import { Seat } from '../seat.model';
 import { Map } from '../map.model';
 import { Router } from '@angular/router';
+import { globals } from '../globals';
 
 @Component({
   selector: 'app-map',
@@ -22,7 +23,6 @@ export class MapComponent implements OnInit {
   imageHeight: number;
   mapScale: number;
   showPerson = false;
-  imagePath = '/assets/img/';
 
   constructor(private peopleService: PeopleService, private router: Router) {}
 
@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
       const mapFilename = this.map.file;
 
       // set map image
-      this.imageUrl = this.imagePath + mapFilename;
+      this.imageUrl = globals.imagePath + mapFilename;
 
       // set dimensions based on map image width
       this.imageHeight = this.imageWidth * this.imageScale;

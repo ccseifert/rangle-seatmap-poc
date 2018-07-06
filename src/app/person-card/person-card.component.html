@@ -8,7 +8,7 @@
     'height.px': map.personCardHeight,
     'width.px': map.personCardWidth
   }">
-  <img src="{{ imagePath }}people/{{ person.image }}" (error)="updateImage($event)">
+  <app-user-image [image]="person.image"></app-user-image>
   <!-- width="{{ imageDefaultWidth / mapScale }}" -->
   <div class="details">
     <h1>{{ person.firstname }} {{ person.lastname }}</h1>
