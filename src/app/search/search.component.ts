@@ -10,8 +10,7 @@ import { globals } from '../globals';
 })
 export class SearchComponent implements OnInit {
   peopleData: Person[];
-  @Input() showSearch = true;
-  showSearch2 = false;
+  showSearch = false;
   imagePath = globals.imagePath;
 
   constructor(private peopleService: PeopleService) {}
