@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PeopleService } from './people.service';
@@ -13,9 +14,17 @@ import { SearchComponent } from './search/search.component';
 import { UserImageComponent } from './user-image/user-image.component';
 
 @NgModule({
-  declarations: [AppComponent, MarkerComponent, MapComponent, HeaderComponent, PersonCardComponent, SearchComponent, UserImageComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    MarkerComponent,
+    MapComponent,
+    HeaderComponent,
+    PersonCardComponent,
+    SearchComponent,
+    UserImageComponent
+  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [PeopleService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

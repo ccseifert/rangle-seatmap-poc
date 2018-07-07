@@ -9,7 +9,6 @@
   ></app-marker>
   <app-person-card
     *ngIf="showPerson"
-    [person]="person"
     [mapScale]="mapScale"
     [map]="map"
     (notify)="closePerson()"

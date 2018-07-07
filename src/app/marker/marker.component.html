@@ -1,6 +1,7 @@
 <div
   class="marker"
   (mouseenter)="onMouseEnter(person.id, $event)"
+  [class.active]="markerActive"
   [ngStyle]="{
     'top.px': (seat.y * mapScale),
     'left.px': (seat.x * mapScale),

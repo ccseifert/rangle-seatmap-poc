@@ -12,14 +12,12 @@ export class SearchComponent implements OnInit {
   peopleData: Person[];
   showSearch = false;
   imagePath = globals.imagePath;
+  searchText: string;
 
   constructor(private peopleService: PeopleService) {}
 
   ngOnInit() {
-    // get people data - TODO: can this be consolidated with the same code in map.component.ts?
-    this.peopleService.getData().subscribe(data => {
-      this.peopleData = data['people'].sort(this.sortByName);
-    });
+    this.resetPeople();
   }
 
   // TODO: seems like this should go somewhere better / more abstract
@@ -38,7 +36,39 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  resetPeople() {
+    // get people data
+    // TODO: can this be consolidated with the same code in map.component.ts?
+    // TODO: Lazy load people when browsing all?
+    this.peopleService.getData().subscribe(data => {
+      this.peopleData = data['people'].sort(this.sortByName);
+    });
+  }
+
+  filterPeople() {
+    this.searchText = this.searchText.toLowerCase();
+    this.peopleService.getData().subscribe(data => {
+      this.peopleData = data['people']
+        .filter(person => {
+          if (person.firstname.toLowerCase().includes(this.searchText)) {
+            return true;
+          }
+          if (person.lastname.toLowerCase().includes(this.searchText)) {
+            return true;
+          }
+        })
+        .sort(this.sortByName);
+    });
+  }
+
+  selectPerson(person: Person) {
+    this.peopleService.setActivePerson(person);
+    this.closeSearch();
+  }
+
   closeSearch() {
+    this.searchText = null;
     this.showSearch = false;
+    this.resetPeople();
   }
 }

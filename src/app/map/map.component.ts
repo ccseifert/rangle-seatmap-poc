@@ -23,6 +23,7 @@ export class MapComponent implements OnInit {
   imageHeight: number;
   mapScale: number;
   showPerson = false;
+  activePerson: Person;
 
   constructor(private peopleService: PeopleService, private router: Router) {}
 
@@ -50,6 +51,14 @@ export class MapComponent implements OnInit {
     this.peopleService.getData().subscribe(data => {
       this.seatData = data['seats']['floor' + this.map.id];
     });
+    this.peopleService.getActivePerson().subscribe(data => {
+      this.activePerson = data;
+      if (this.activePerson) {
+        this.showPerson = true;
+      } else {
+        this.showPerson = false;
+      }
+    });
   }
 
   getPerson(id: string) {
@@ -58,10 +67,10 @@ export class MapComponent implements OnInit {
 
   onNotify(id: string) {
     this.person = this.getPerson(id);
-    this.showPerson = true;
+    this.peopleService.setActivePerson(this.person);
   }
 
   closePerson() {
-    this.showPerson = false;
+    this.peopleService.setActivePerson(null);
   }
 }
