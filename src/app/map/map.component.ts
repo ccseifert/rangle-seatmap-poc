@@ -49,7 +49,8 @@ export class MapComponent implements OnInit {
 
     // get seat data
     this.peopleService.getData().subscribe(data => {
-      this.seatData = data['seats']['floor' + this.map.id];
+      //      this.seatData = data['seats']['floor' + this.map.id];
+      this.seatData = data['seats'].filter(seat => seat.floor === this.map.id);
     });
     this.peopleService.getActivePerson().subscribe(data => {
       this.activePerson = data;
