@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PeopleService } from '../people.service';
 import { Person } from '../person.model';
 import { globals } from '../globals';
+import { Router } from '../../../node_modules/@angular/router';
+import { Map } from '../map.model';
 
 @Component({
   selector: 'app-search',
@@ -10,11 +12,12 @@ import { globals } from '../globals';
 })
 export class SearchComponent implements OnInit {
   peopleData: Person[];
+  map: Map;
   showSearch = false;
   imagePath = globals.imagePath;
   searchText: string;
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(private peopleService: PeopleService, private router: Router) {}
 
   ngOnInit() {
     this.resetPeople();
@@ -42,6 +45,7 @@ export class SearchComponent implements OnInit {
     // TODO: Lazy load people when browsing all?
     this.peopleService.getData().subscribe(data => {
       this.peopleData = data['people'].sort(this.sortByName);
+      this.map = data['maps'].find(m => m.path === this.router.url);
     });
   }
 
@@ -64,6 +68,10 @@ export class SearchComponent implements OnInit {
   selectPerson(person: Person) {
     this.peopleService.setActivePerson(person);
     this.closeSearch();
+
+    // navigate to different floor if person isn't on this floor
+    // this.router.navigate([''], { queryParams: { seat: person.id } });
+    // this.map.id;
   }
 
   closeSearch() {
