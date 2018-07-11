@@ -31,7 +31,11 @@ export class MapComponent implements OnInit {
     // get map info from json file
     this.peopleService.getData().subscribe(data => {
       this.mapData = data['maps'];
-      this.map = this.mapData.find(m => m.path === this.router.url);
+
+      const urlTree = this.router.parseUrl(this.router.url);
+      const page = urlTree.root.children['primary'].segments.map(it => it.path);
+
+      this.map = this.mapData.find(m => m.path === '/' + page);
       const mapFilename = this.map.file;
 
       // set map image

@@ -68,6 +68,15 @@ export class SearchComponent implements OnInit {
   selectPerson(person: Person) {
     this.peopleService.setActivePerson(person);
     this.closeSearch();
+    this.peopleService.getData().subscribe(data => {
+      const seat = data['seats'].find(s => s.id === person.id);
+      const floor = seat.floor;
+      if (this.map.id !== floor) {
+        this.router.navigate(['/' + floor + 'th-floor'], {
+          queryParams: { seat: person.id }
+        });
+      }
+    });
 
     // navigate to different floor if person isn't on this floor
     // this.router.navigate([''], { queryParams: { seat: person.id } });
