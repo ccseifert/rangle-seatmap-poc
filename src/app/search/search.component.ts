@@ -45,7 +45,11 @@ export class SearchComponent implements OnInit {
     // TODO: Lazy load people when browsing all?
     this.peopleService.getData().subscribe(data => {
       this.peopleData = data['people'].sort(this.sortByName);
-      this.map = data['maps'].find(m => m.path === this.router.url);
+      const mapData = data['maps'];
+      const urlTree = this.router.parseUrl(this.router.url);
+      const page = urlTree.root.children['primary'].segments.map(it => it.path);
+
+      this.map = mapData.find(m => m.path === '/' + page);
     });
   }
 
@@ -71,10 +75,15 @@ export class SearchComponent implements OnInit {
     this.peopleService.getData().subscribe(data => {
       const seat = data['seats'].find(s => s.id === person.id);
       const floor = seat.floor;
+
       if (this.map.id !== floor) {
-        this.router.navigate(['/' + floor + 'th-floor'], {
+        this.router.navigate(
+          [
+            '/' + floor + 'th-floor'
+          ] /*, {
           queryParams: { seat: person.id }
-        });
+        }*/
+        );
       }
     });
 
