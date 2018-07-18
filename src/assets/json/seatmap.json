@@ -20,6 +20,7 @@
     }
   ],
   "seats": [
+    { "id": "D1", "x": 425, "y": 545, "floor": 5 },
     { "id": "D5", "x": 426, "y": 634, "floor": 5 },
     { "id": "K11", "x": 637, "y": 537, "floor": 6 },
     { "id": "L26", "x": 268, "y": 583, "floor": 6 },
@@ -66,6 +67,14 @@
       "title": "Technical Director",
       "email": "andrew.thauer@rangle.io",
       "image": "andrew.thauer.png"
+    },
+    {
+      "id": "D1",
+      "firstname": "Rado",
+      "lastname": "Ratkovic",
+      "title": "Manager, Visual Design",
+      "email": "radoslav.ratkovic@rangle.io",
+      "image": "radoslav.ratkovic.png"
     }
   ]
 }
