@@ -23,6 +23,9 @@
     { "id": "D1", "x": 425, "y": 545, "floor": 5 },
     { "id": "D5", "x": 426, "y": 634, "floor": 5 },
     { "id": "K11", "x": 637, "y": 537, "floor": 6 },
+    { "id": "K12", "x": 637, "y": 557, "floor": 6 },
+    { "id": "L24", "x": 268, "y": 539, "floor": 6 },
+    { "id": "L25", "x": 268, "y": 558, "floor": 6 },
     { "id": "L26", "x": 268, "y": 583, "floor": 6 },
     { "id": "L27", "x": 268, "y": 603, "floor": 6 },
     { "id": "L28", "x": 268, "y": 628, "floor": 6 }
@@ -35,6 +38,14 @@
       "title": "Group Technical Director",
       "email": "michael.bennett@rangle.io",
       "image": "michael.bennett.png"
+    },
+    {
+      "id": "K12",
+      "firstname": "Catherine",
+      "lastname": "Marchand",
+      "title": "Delivery Specialist",
+      "email": "catherine.marchand@rangle.io",
+      "image": "catherine.marchand.png"
     },
     {
       "id": "L26",
@@ -75,6 +86,22 @@
       "title": "Manager, Visual Design",
       "email": "radoslav.ratkovic@rangle.io",
       "image": "radoslav.ratkovic.png"
+    },
+    {
+      "id": "L24",
+      "firstname": "Mohamad",
+      "lastname": "El Osta",
+      "title": "Technical Director",
+      "email": "mohamad.elosta@rangle.io",
+      "image": "mohamad.elosta.jpg"
+    },
+    {
+      "id": "L25",
+      "firstname": "David",
+      "lastname": "Baretto",
+      "title": "Technical Director",
+      "email": "david.baretto@rangle.io",
+      "image": "david.baretto.jpg"
     }
   ]
 }
