@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
       const floor = seat.floor;
 
       if (this.map.id !== floor) {
-        this.router.navigate(['/' + floor + 'th-floor'], { queryParams: { seat: person.id } });
+        this.router.navigate([floor + 'th-floor'], { queryParams: { seat: person.id } });
       } else {
         this.peopleService.setActivePerson(person);
       }
