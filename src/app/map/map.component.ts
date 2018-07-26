@@ -3,8 +3,9 @@ import { PeopleService } from '../people.service';
 import { Person } from '../person.model';
 import { Seat } from '../seat.model';
 import { Map } from '../map.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { globals } from '../globals';
+import { HttpParams } from '../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-map',
@@ -25,13 +26,19 @@ export class MapComponent implements OnInit {
   showPerson = false;
   activePerson: Person;
 
-  constructor(private peopleService: PeopleService, private router: Router) {}
+  constructor(private peopleService: PeopleService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     // get map info from json file
     this.peopleService.getData().subscribe(data => {
       this.mapData = data['maps'];
       this.peopleData = data['people'];
+
+      // if there is a seat in the query string, set the person
+      const paramsId = this.route.snapshot.queryParams.seat;
+      if (paramsId) {
+        this.setPerson(paramsId);
+      }
 
       // get page name
       const urlTree = this.router.parseUrl(this.router.url);
@@ -66,9 +73,13 @@ export class MapComponent implements OnInit {
     return this.peopleData.find(person => person.id === id);
   }
 
-  onNotify(id: string) {
+  setPerson(id: string) {
     this.person = this.getPerson(id);
     this.peopleService.setActivePerson(this.person);
+  }
+
+  onNotify(id: string) {
+    this.setPerson(id);
   }
 
   closePerson() {
