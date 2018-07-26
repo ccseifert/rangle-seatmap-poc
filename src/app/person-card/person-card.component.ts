@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Person } from '../person.model';
 import { Map } from '../map.model';
-import { PeopleService } from '../people.service';
+import { DataService } from '../data.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ export class PersonCardComponent implements OnInit, OnDestroy {
   @Input() mapScale: number;
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(private dataService: DataService) {}
 
   private _map = new BehaviorSubject<Map>(null);
 
@@ -41,7 +41,7 @@ export class PersonCardComponent implements OnInit, OnDestroy {
       this.map.personCardHeight = this.map.personCardHeight * this.mapScale;
       this.map.personCardWidth = this.map.personCardWidth * this.mapScale;
     });
-    this.peopleService.getActivePerson().subscribe(data => {
+    this.dataService.getActivePerson().subscribe(data => {
       this.person = data;
     });
   }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from '../../node_modules/rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Person } from './person.model';
 
 @Injectable()
-export class PeopleService {
+export class DataService {
   url = 'assets/json/seatmap.json';
   // activePerson: string;
   public activePerson = new BehaviorSubject<Person>(null);

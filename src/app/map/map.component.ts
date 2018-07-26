@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleService } from '../people.service';
+import { DataService } from '../data.service';
 import { Person } from '../person.model';
 import { Seat } from '../seat.model';
 import { Map } from '../map.model';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationStart } from '@angular/router';
 import { globals } from '../globals';
 
 @Component({
@@ -25,11 +25,15 @@ export class MapComponent implements OnInit {
   showPerson = false;
   activePerson: Person;
 
-  constructor(private peopleService: PeopleService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.resetMap();
+  }
+
+  resetMap() {
     // get map info from json file
-    this.peopleService.getData().subscribe(data => {
+    this.dataService.getData().subscribe(data => {
       this.mapData = data['maps'];
       this.peopleData = data['people'];
 
@@ -58,7 +62,7 @@ export class MapComponent implements OnInit {
       this.mapScale = this.imageWidth / 1000;
     });
 
-    this.peopleService.getActivePerson().subscribe(data => {
+    this.dataService.getActivePerson().subscribe(data => {
       this.activePerson = data;
       if (this.activePerson) {
         this.showPerson = true;
@@ -74,7 +78,7 @@ export class MapComponent implements OnInit {
 
   setPerson(id: string) {
     this.person = this.getPerson(id);
-    this.peopleService.setActivePerson(this.person);
+    this.dataService.setActivePerson(this.person);
   }
 
   onNotify(id: string) {
@@ -82,6 +86,6 @@ export class MapComponent implements OnInit {
   }
 
   closePerson() {
-    this.peopleService.setActivePerson(null);
+    this.dataService.setActivePerson(null);
   }
 }

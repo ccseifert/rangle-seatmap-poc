@@ -1,13 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { PeopleService } from './people.service';
+import { DataService } from './data.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      providers: [PeopleService],
+      providers: [DataService],
       imports: [HttpClientTestingModule],
     }).compileComponents();
   }));

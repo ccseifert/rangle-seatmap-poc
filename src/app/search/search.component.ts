@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PeopleService } from '../people.service';
+import { DataService } from '../data.service';
 import { Person } from '../person.model';
 import { globals } from '../globals';
-import { Router } from '../../../node_modules/@angular/router';
-import { Map } from '../map.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -12,12 +11,11 @@ import { Map } from '../map.model';
 })
 export class SearchComponent implements OnInit {
   peopleData: Person[];
-  map: Map;
   showSearch = false;
   imagePath = globals.imagePath;
   searchText: string;
 
-  constructor(private peopleService: PeopleService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit() {
     this.resetPeople();
@@ -42,22 +40,16 @@ export class SearchComponent implements OnInit {
   // reset data
   resetPeople() {
     // get people data
-    // TODO: can this be consolidated with the same code in map.component.ts?
     // TODO: Lazy load people when browsing all?
-    this.peopleService.getData().subscribe(data => {
+    this.dataService.getData().subscribe(data => {
       this.peopleData = data['people'].sort(this.sortByName);
-      const mapData = data['maps'];
-      const urlTree = this.router.parseUrl(this.router.url);
-      const page = urlTree.root.children['primary'].segments.map(it => it.path);
-
-      this.map = mapData.find(m => m.path === '/' + page);
     });
   }
 
   // filter browse list based on search criteria
   filterPeople() {
     this.searchText = this.searchText.toLowerCase();
-    this.peopleService.getData().subscribe(data => {
+    this.dataService.getData().subscribe(data => {
       this.peopleData = data['people']
         .filter(person => {
           if (person.firstname.toLowerCase().includes(this.searchText)) {
@@ -74,14 +66,19 @@ export class SearchComponent implements OnInit {
   // user clicks person in search box, sends them to the appropriate floor, opens their usercard
   selectPerson(person: Person) {
     this.closeSearch();
-    this.peopleService.getData().subscribe(data => {
+    this.dataService.getData().subscribe(data => {
       const seat = data['seats'].find(s => s.id === person.id);
       const floor = seat.floor;
 
-      if (this.map.id !== floor) {
+      // TODO: can this be consolidated with the same code in map.component.ts?
+      const urlTree = this.router.parseUrl(this.router.url);
+      const page = urlTree.root.children['primary'].segments.map(it => it.path);
+      const map = data['maps'].find(m => m.path === '/' + page);
+
+      if (map.id !== floor) {
         this.router.navigate([floor + 'th-floor'], { queryParams: { seat: person.id } });
       } else {
-        this.peopleService.setActivePerson(person);
+        this.dataService.setActivePerson(person);
       }
     });
   }

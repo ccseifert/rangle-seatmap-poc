@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { PeopleService } from './people.service';
+import { DataService } from './data.service';
 import { MarkerComponent } from './marker/marker.component';
 import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app.routing-module';
@@ -21,10 +21,10 @@ import { UserImageComponent } from './user-image/user-image.component';
     HeaderComponent,
     PersonCardComponent,
     SearchComponent,
-    UserImageComponent
+    UserImageComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
-  providers: [PeopleService],
-  bootstrap: [AppComponent]
+  providers: [DataService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
