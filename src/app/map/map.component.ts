@@ -5,7 +5,6 @@ import { Seat } from '../seat.model';
 import { Map } from '../map.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { globals } from '../globals';
-import { HttpParams } from '../../../node_modules/@angular/common/http';
 
 @Component({
   selector: 'app-map',
