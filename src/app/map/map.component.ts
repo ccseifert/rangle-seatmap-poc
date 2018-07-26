@@ -31,12 +31,14 @@ export class MapComponent implements OnInit {
     // get map info from json file
     this.peopleService.getData().subscribe(data => {
       this.mapData = data['maps'];
+      this.peopleData = data['people'];
 
       const urlTree = this.router.parseUrl(this.router.url);
       const page = urlTree.root.children['primary'].segments.map(it => it.path);
 
       this.map = this.mapData.find(m => m.path === '/' + page);
       const mapFilename = this.map.file;
+      this.seatData = data['seats'].filter(seat => seat.floor === this.map.id);
 
       // set map image
       this.imageUrl = globals.imagePath + mapFilename;
@@ -46,16 +48,6 @@ export class MapComponent implements OnInit {
       this.mapScale = this.imageWidth / 1000;
     });
 
-    // get people data
-    this.peopleService.getData().subscribe(data => {
-      this.peopleData = data['people'];
-    });
-
-    // get seat data
-    this.peopleService.getData().subscribe(data => {
-      //      this.seatData = data['seats']['floor' + this.map.id];
-      this.seatData = data['seats'].filter(seat => seat.floor === this.map.id);
-    });
     this.peopleService.getActivePerson().subscribe(data => {
       this.activePerson = data;
       if (this.activePerson) {

@@ -15,6 +15,10 @@
   margin-left: 1rem;
 }
 
+.person h1 {
+  font-size: 1.85rem
+}
+
 .person h1, .person h2 {
   margin: 0;
 }
