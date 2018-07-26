@@ -1,13 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges,
-  SimpleChanges,
-  OnDestroy
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Person } from '../person.model';
 import { Map } from '../map.model';
 import { PeopleService } from '../people.service';
@@ -16,9 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-person-card',
   templateUrl: './person-card.component.html',
-  styleUrls: ['./person-card.component.css']
+  styleUrls: ['./person-card.component.css'],
 })
-export class PersonCardComponent implements OnInit, OnDestroy /*, OnChanges*/ {
+export class PersonCardComponent implements OnInit, OnDestroy {
   // @Input() person: Person;
   person: Person;
   // @Input() map: Map;
@@ -59,22 +50,6 @@ export class PersonCardComponent implements OnInit, OnDestroy /*, OnChanges*/ {
     this._map.unsubscribe();
   }
 
-  /*
-  ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['map']) {
-      this.map.personCardX = this.map.personCardX * this.mapScale;
-      this.map.personCardY = this.map.personCardY * this.mapScale;
-      this.map.personCardHeight = this.map.personCardHeight * this.mapScale;
-      this.map.personCardWidth = this.map.personCardWidth * this.mapScale;
-
-      this.peopleService.getActivePerson().subscribe(data => {
-        this.person = data;
-      });
-    }
-  }
-*/
   closePerson() {
     this.notify.emit();
   }
