@@ -33,8 +33,8 @@ export class PersonCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // now we can subscribe to it, whenever input changes,
-    // we will run our grouping logic
+    // subscribe to map, whenever it changes,
+    // we will run our map logic
     this._map.subscribe(x => {
       this.map.personCardX = this.map.personCardX * this.mapScale;
       this.map.personCardY = this.map.personCardY * this.mapScale;
