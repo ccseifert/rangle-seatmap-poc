@@ -61,7 +61,7 @@
       "lastname": "Corrigall",
       "title": "Technical Director",
       "email": "luke.corrigall@rangle.io",
-      "image": "luke.corrigall.jpg"
+      "image": "luke.corrigall.png"
     },
     {
       "id": "D5",
@@ -69,7 +69,7 @@
       "lastname": "Oregel",
       "title": "Product Designer",
       "email": "gus.oregel@rangle.io",
-      "image": "gus.oregel.jpg"
+      "image": "gus.oregel.png"
     },
     {
       "id": "L28",
@@ -101,7 +101,7 @@
       "lastname": "Baretto",
       "title": "Technical Director",
       "email": "david.baretto@rangle.io",
-      "image": "david.baretto.jpg"
+      "image": "david.baretto.png"
     }
   ]
 }
