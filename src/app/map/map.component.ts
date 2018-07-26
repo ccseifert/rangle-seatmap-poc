@@ -9,7 +9,7 @@ import { globals } from '../globals';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
   peopleData: Person[];
@@ -33,11 +33,15 @@ export class MapComponent implements OnInit {
       this.mapData = data['maps'];
       this.peopleData = data['people'];
 
+      // get page name
       const urlTree = this.router.parseUrl(this.router.url);
       const page = urlTree.root.children['primary'].segments.map(it => it.path);
 
+      // get correct map image based on page name
       this.map = this.mapData.find(m => m.path === '/' + page);
       const mapFilename = this.map.file;
+
+      // get correct seat data for this map
       this.seatData = data['seats'].filter(seat => seat.floor === this.map.id);
 
       // set map image

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../people.service';
 import { Person } from '../person.model';
 import { globals } from '../globals';
@@ -8,7 +8,7 @@ import { Map } from '../map.model';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
   peopleData: Person[];
@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  // reset data
   resetPeople() {
     // get people data
     // TODO: can this be consolidated with the same code in map.component.ts?
@@ -53,6 +54,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  // filter browse list based on search criteria
   filterPeople() {
     this.searchText = this.searchText.toLowerCase();
     this.peopleService.getData().subscribe(data => {
@@ -69,6 +71,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  // user clicks person in search box, sends them to the appropriate floor, opens their usercard
   selectPerson(person: Person) {
     this.closeSearch();
     this.peopleService.getData().subscribe(data => {
@@ -81,12 +84,9 @@ export class SearchComponent implements OnInit {
         this.peopleService.setActivePerson(person);
       }
     });
-
-    // navigate to different floor if person isn't on this floor
-    // this.router.navigate([''], { queryParams: { seat: person.id } });
-    // this.map.id;
   }
 
+  // close search box
   closeSearch() {
     this.searchText = null;
     this.showSearch = false;
