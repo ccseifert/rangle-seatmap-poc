@@ -70,20 +70,15 @@ export class SearchComponent implements OnInit {
   }
 
   selectPerson(person: Person) {
-    this.peopleService.setActivePerson(person);
     this.closeSearch();
     this.peopleService.getData().subscribe(data => {
       const seat = data['seats'].find(s => s.id === person.id);
       const floor = seat.floor;
 
       if (this.map.id !== floor) {
-        this.router.navigate(
-          [
-            '/' + floor + 'th-floor'
-          ] /*, {
-          queryParams: { seat: person.id }
-        }*/
-        );
+        this.router.navigate(['/' + floor + 'th-floor'], { queryParams: { seat: person.id } });
+      } else {
+        this.peopleService.setActivePerson(person);
       }
     });
 
