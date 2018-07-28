@@ -3,19 +3,19 @@ import { DataService } from '../data.service';
 import { Person } from '../person.model';
 import { Seat } from '../seat.model';
 import { Map } from '../map.model';
-import { Router, ActivatedRoute, Params, NavigationStart } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { globals } from '../globals';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css'],
+  styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
   peopleData: Person[];
-  person: Person;
   seatData: Seat[];
   mapData: Map[];
+  activePerson: Person;
   map: Map;
   imageUrl: string;
   imageScale = 0.785;
@@ -23,53 +23,71 @@ export class MapComponent implements OnInit {
   imageHeight: number;
   mapScale: number;
   showPerson = false;
-  activePerson: Person;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.resetMap();
-  }
-
-  resetMap() {
     // get map info from json file
     this.dataService.getData().subscribe(data => {
       this.mapData = data['maps'];
       this.peopleData = data['people'];
+      this.seatData = data['seats'];
 
-      // if there is a seat in the query string, set the person
-      const paramsId = this.route.snapshot.queryParams.seat;
-      if (paramsId) {
-        this.setPerson(paramsId);
-      }
-
-      // get page name
-      const urlTree = this.router.parseUrl(this.router.url);
-      const page = urlTree.root.children['primary'].segments.map(it => it.path);
-
-      // get correct map image based on page name
-      this.map = this.mapData.find(m => m.path === '/' + page);
-      const mapFilename = this.map.file;
+      this.setPersonFromParams();
+      this.setMap();
 
       // get correct seat data for this map
-      this.seatData = data['seats'].filter(seat => seat.floor === this.map.id);
+      this.seatData = this.seatData.filter(seat => seat.floor === this.map.id);
 
-      // set map image
-      this.imageUrl = globals.imagePath + mapFilename;
-
-      // set dimensions based on map image width
-      this.imageHeight = this.imageWidth * this.imageScale;
-      this.mapScale = this.imageWidth / 1000;
+      this.setMapFile();
+      this.setImageHeight();
+      this.setMapScale();
     });
 
+    // get info about active person shown in person-card
     this.dataService.getActivePerson().subscribe(data => {
       this.activePerson = data;
+      this.showPerson = false;
       if (this.activePerson) {
         this.showPerson = true;
-      } else {
-        this.showPerson = false;
       }
     });
+  }
+
+  setPersonFromParams() {
+    // if there is a seat in the query string, set the person
+    const paramsId = this.route.snapshot.queryParams.seat;
+    if (paramsId) {
+      this.setPerson(paramsId);
+    }
+  }
+
+  setMap() {
+    // get page name
+    const urlTree = this.router.parseUrl(this.router.url);
+    const page = urlTree.root.children['primary'].segments.map(it => it.path);
+
+    // get correct map image based on page name
+    this.map = this.mapData.find(m => m.path === '/' + page);
+  }
+
+  setMapFile() {
+    // set map image
+    const mapFilename = this.map.file;
+    this.imageUrl = globals.imagePath + mapFilename;
+  }
+
+  setImageHeight() {
+    // set dimensions based on map image width
+    this.imageHeight = this.imageWidth * this.imageScale;
+  }
+
+  setMapScale() {
+    this.mapScale = this.imageWidth / 1000;
   }
 
   getPerson(id: string) {
@@ -77,8 +95,8 @@ export class MapComponent implements OnInit {
   }
 
   setPerson(id: string) {
-    this.person = this.getPerson(id);
-    this.dataService.setActivePerson(this.person);
+    const person = this.getPerson(id);
+    this.dataService.setActivePerson(person);
   }
 
   onNotify(id: string) {
