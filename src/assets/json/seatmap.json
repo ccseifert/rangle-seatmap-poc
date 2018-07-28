@@ -24,6 +24,7 @@
     { "id": "D5", "x": 426, "y": 634, "floor": 5 },
     { "id": "K11", "x": 637, "y": 537, "floor": 6 },
     { "id": "K12", "x": 637, "y": 557, "floor": 6 },
+    { "id": "L7", "x": 405, "y": 558, "floor": 6 },
     { "id": "L24", "x": 268, "y": 539, "floor": 6 },
     { "id": "L25", "x": 268, "y": 558, "floor": 6 },
     { "id": "L26", "x": 268, "y": 583, "floor": 6 },
@@ -102,6 +103,14 @@
       "title": "Technical Director",
       "email": "david.baretto@rangle.io",
       "image": "david.baretto.png"
+    },
+    {
+      "id": "L7",
+      "firstname": "Katie",
+      "lastname": "Egervari",
+      "title": "Senior Solutions Architect",
+      "email": "katie.egervari@rangle.io",
+      "image": "katie.egervari.png"
     }
   ]
 }
