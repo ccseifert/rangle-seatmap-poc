@@ -3,8 +3,8 @@ jobs:
   build:
     working_directory: ~/rangle-seatmap-poc
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - run: npm install
-      - run: npm test --watch=false
+      - run: npm run test -- --watch=false --progress=false
