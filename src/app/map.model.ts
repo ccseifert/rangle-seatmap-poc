@@ -1,5 +1,5 @@
 export class Map {
-  public id: string;
+  public id: number;
   public file: string;
   public path: string;
   public personCardX: number;
@@ -8,7 +8,7 @@ export class Map {
   public personCardWidth: number;
 
   constructor(
-    id: string,
+    id: number,
     file: string,
     path: string,
     personCardX: number,
