@@ -5,15 +5,19 @@
 
   <!-- Overlay content -->
   <div id="search-box">
-    <h1>Search</h1>
-    <div class="search-input">
-      <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterPeople()" placeholder="Search for a Rangler">
+    <div id="search-header">
+      <h1>Search</h1>
+      <div class="search-input">
+        <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterPeople()" placeholder="Search for a Rangler">
+      </div>
     </div>
 
-    <div class="person" *ngFor="let person of peopleData">
-      <a style="cursor: pointer;" (click)="selectPerson(person)">
-        <app-user-image [image]="person.image"></app-user-image> {{ person.firstname }} {{ person.lastname }}
-      </a>
+    <div id="search-person">
+      <div class="person" *ngFor="let person of peopleData">
+        <a style="cursor: pointer;" (click)="selectPerson(person)">
+          <app-user-image [image]="person.image"></app-user-image> {{ person.firstname }} {{ person.lastname }}
+        </a>
+      </div>
     </div>
 
     <div id="searchClose" (click)="closeSearch()">X</div>
