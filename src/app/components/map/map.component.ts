@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Person } from '../person.model';
-import { Seat } from '../seat.model';
-import { Map } from '../map.model';
+import { DataService } from '../../services/data.service';
+import { Person } from '../../types/person.model';
+import { Seat } from '../../types/seat.model';
+import { Map } from '../../types/map.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { globals } from '../globals';
+import { globals } from '../../globals';
 
 @Component({
   selector: 'app-map',

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Person } from '../person.model';
-import { globals } from '../globals';
+import { DataService } from '../../services/data.service';
+import { Person } from '../../types/person.model';
+import { globals } from '../../globals';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css'],
+  styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
   peopleData: Person[];
@@ -76,7 +76,9 @@ export class SearchComponent implements OnInit {
       const map = data['maps'].find(m => m.path === '/' + page);
 
       if (map.id !== floor) {
-        this.router.navigate([floor + 'th-floor'], { queryParams: { seat: person.id } });
+        this.router.navigate([floor + 'th-floor'], {
+          queryParams: { seat: person.id }
+        });
       } else {
         this.dataService.setActivePerson(person);
       }

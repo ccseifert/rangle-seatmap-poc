@@ -4,14 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { DataService } from './data.service';
-import { MarkerComponent } from './marker/marker.component';
-import { MapComponent } from './map/map.component';
+import { DataService } from './services/data.service';
+import { MarkerComponent } from './components/marker/marker.component';
+import { MapComponent } from './components/map/map.component';
 import { AppRoutingModule } from './app.routing-module';
-import { HeaderComponent } from './header/header.component';
-import { PersonCardComponent } from './person-card/person-card.component';
-import { SearchComponent } from './search/search.component';
-import { UserImageComponent } from './user-image/user-image.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PersonCardComponent } from './components/person-card/person-card.component';
+import { SearchComponent } from './components/search/search.component';
+import { UserImageComponent } from './components/user-image/user-image.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +21,10 @@ import { UserImageComponent } from './user-image/user-image.component';
     HeaderComponent,
     PersonCardComponent,
     SearchComponent,
-    UserImageComponent,
+    UserImageComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [DataService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

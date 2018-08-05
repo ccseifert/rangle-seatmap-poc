@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { Person } from './person.model';
+import { Person } from '../types/person.model';
 
 @Injectable()
 export class DataService {

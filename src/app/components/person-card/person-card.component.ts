@@ -6,9 +6,9 @@ import {
   EventEmitter,
   OnDestroy
 } from '@angular/core';
-import { Person } from '../person.model';
-import { Map } from '../map.model';
-import { DataService } from '../data.service';
+import { Person } from '../../types/person.model';
+import { Map } from '../../types/map.model';
+import { DataService } from '../../services/data.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

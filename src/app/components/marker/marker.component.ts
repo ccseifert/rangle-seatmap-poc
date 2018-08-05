@@ -1,12 +1,19 @@
-import { Component, OnInit, Input, EventEmitter, Output, Renderer } from '@angular/core';
-import { Seat } from '../seat.model';
-import { Person } from '../person.model';
-import { DataService } from '../data.service';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  Renderer
+} from '@angular/core';
+import { Seat } from '../../types/seat.model';
+import { Person } from '../../types/person.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-marker',
   templateUrl: './marker.component.html',
-  styleUrls: ['./marker.component.css'],
+  styleUrls: ['./marker.component.css']
 })
 export class MarkerComponent implements OnInit {
   @Input() seat: Seat;
