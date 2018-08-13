@@ -10,19 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  peopleData: Person[];
-  showSearch = false;
-  imagePath = environment.imagePath;
-  searchText: string;
+  private peopleData: Person[];
+  private showSearch = false;
+  private imagePath = environment.imagePath;
+  private searchText: string;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  public constructor(
+    private dataService: DataService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.resetPeople();
   }
 
   // TODO: seems like this should go somewhere better / more abstract
-  sortByName(a, b) {
+  private sortByName(a, b) {
     if (a.lastname < b.lastname) {
       return -1;
     } else if (a.lastname > b.lastname) {
@@ -38,7 +41,7 @@ export class SearchComponent implements OnInit {
   }
 
   // reset data
-  resetPeople() {
+  private resetPeople() {
     // get people data
     // TODO: Lazy load people when browsing all?
     this.dataService.getData().subscribe(data => {
@@ -47,7 +50,7 @@ export class SearchComponent implements OnInit {
   }
 
   // filter browse list based on search criteria
-  filterPeople() {
+  private filterPeople() {
     this.searchText = this.searchText.toLowerCase();
     this.dataService.getData().subscribe(data => {
       this.peopleData = data['people']
@@ -64,7 +67,7 @@ export class SearchComponent implements OnInit {
   }
 
   // user clicks person in search box, sends them to the appropriate floor, opens their usercard
-  selectPerson(person: Person) {
+  private selectPerson(person: Person) {
     this.closeSearch();
     this.dataService.getData().subscribe(data => {
       const seat = data['seats'].find(s => s.id === person.id);
@@ -86,7 +89,7 @@ export class SearchComponent implements OnInit {
   }
 
   // close search box
-  closeSearch() {
+  private closeSearch() {
     this.searchText = null;
     this.showSearch = false;
     this.resetPeople();

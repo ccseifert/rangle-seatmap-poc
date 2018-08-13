@@ -18,28 +18,28 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PersonCardComponent implements OnInit, OnDestroy {
   // @Input() person: Person;
-  person: Person;
+  private person: Person;
   // @Input() map: Map;
-  @Input() mapScale: number;
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Input() private mapScale: number;
+  @Output() private notify: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private dataService: DataService) {}
+  public constructor(private dataService: DataService) {}
 
   private _map = new BehaviorSubject<Map>(null);
 
   // change data to use getter and setter
   @Input()
-  set map(value) {
+  private set map(value) {
     // set the latest value for _data BehaviorSubject
     this._map.next(value);
   }
 
-  get map() {
+  private get map() {
     // get the latest value from _data BehaviorSubject
     return this._map.getValue();
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     // subscribe to map, whenever it changes,
     // we will run our map logic
     this._map.subscribe(x => {
@@ -55,11 +55,11 @@ export class PersonCardComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this._map.unsubscribe();
   }
 
-  closePerson() {
+  private closePerson() {
     this.notify.emit();
   }
 }

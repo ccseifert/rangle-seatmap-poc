@@ -7,15 +7,15 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./user-image.component.css']
 })
 export class UserImageComponent implements OnInit {
-  @Input() image: string;
-  imagePath = environment.imagePath;
+  @Input() private image: string;
+  private imagePath = environment.imagePath;
 
-  constructor() {}
+  public constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit() {}
 
   // replace 404 image with generic image
-  updateImage(event) {
+  private updateImage(event) {
     event.target.src = this.imagePath + 'generic_person.png';
   }
 }

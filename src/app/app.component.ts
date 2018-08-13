@@ -7,13 +7,13 @@ import { SearchComponent } from './components/search/search.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild(SearchComponent) search: SearchComponent;
+  @ViewChild(SearchComponent) private search: SearchComponent;
 
-  constructor() {}
+  public constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit() {}
 
-  onNotify() {
+  private onNotify() {
     this.search.showSearch = true;
   }
 }

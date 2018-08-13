@@ -16,17 +16,17 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./marker.component.css']
 })
 export class MarkerComponent implements OnInit {
-  @Input() seat: Seat;
-  @Input() person: Person;
-  @Input() mapScale: number;
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-  markerRadius = 18;
-  activePerson: Person;
-  markerActive = false;
+  @Input() private seat: Seat;
+  @Input() private person: Person;
+  @Input() private mapScale: number;
+  @Output() private notify: EventEmitter<string> = new EventEmitter<string>();
+  private markerRadius = 18;
+  private activePerson: Person;
+  private markerActive = false;
 
-  constructor(private dataService: DataService) {}
+  public constructor(private dataService: DataService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.dataService.getActivePerson().subscribe(data => {
       this.activePerson = data;
       if (this.activePerson && this.activePerson.id === this.person.id) {
@@ -37,7 +37,7 @@ export class MarkerComponent implements OnInit {
     });
   }
 
-  onMouseEnter(id: string, e: MouseEvent) {
+  private onMouseEnter(id: string, e: MouseEvent) {
     this.notify.emit(id);
   }
 }

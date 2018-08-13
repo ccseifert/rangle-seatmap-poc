@@ -12,25 +12,25 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  peopleData: Person[];
-  seatData: Seat[];
-  mapData: Map[];
-  activePerson: Person;
-  map: Map;
-  imageUrl: string;
-  imageScale = 0.785;
-  imageWidth = 1000;
-  imageHeight: number;
-  mapScale: number;
-  showPerson = false;
+  private peopleData: Person[];
+  private seatData: Seat[];
+  private mapData: Map[];
+  private activePerson: Person;
+  private map: Map;
+  private imageUrl: string;
+  private imageScale = 0.785;
+  private imageWidth = 1000;
+  private imageHeight: number;
+  private mapScale: number;
+  private showPerson = false;
 
-  constructor(
+  public constructor(
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     // get map info from json file
     this.dataService.getData().subscribe(data => {
       this.mapData = data['maps'];
@@ -58,7 +58,7 @@ export class MapComponent implements OnInit {
     });
   }
 
-  setPersonFromParams() {
+  private setPersonFromParams() {
     // if there is a seat in the query string, set the person
     const paramsId = this.route.snapshot.queryParams.seat;
     if (paramsId) {
@@ -66,7 +66,7 @@ export class MapComponent implements OnInit {
     }
   }
 
-  setMap() {
+  private setMap() {
     // get page name
     const urlTree = this.router.parseUrl(this.router.url);
     const page = urlTree.root.children['primary'].segments.map(it => it.path);
@@ -75,35 +75,35 @@ export class MapComponent implements OnInit {
     this.map = this.mapData.find(m => m.path === '/' + page);
   }
 
-  setMapFile() {
+  private setMapFile() {
     // set map image
     const mapFilename = this.map.file;
     this.imageUrl = environment.imagePath + mapFilename;
   }
 
-  setImageHeight() {
+  private setImageHeight() {
     // set dimensions based on map image width
     this.imageHeight = this.imageWidth * this.imageScale;
   }
 
-  setMapScale() {
+  private setMapScale() {
     this.mapScale = this.imageWidth / 1000;
   }
 
-  getPerson(id: string) {
+  private getPerson(id: string) {
     return this.peopleData.find(person => person.id === id);
   }
 
-  setPerson(id: string) {
+  private setPerson(id: string) {
     const person = this.getPerson(id);
     this.dataService.setActivePerson(person);
   }
 
-  onNotify(id: string) {
+  private onNotify(id: string) {
     this.setPerson(id);
   }
 
-  closePerson() {
+  private closePerson() {
     this.dataService.setActivePerson(null);
   }
 }

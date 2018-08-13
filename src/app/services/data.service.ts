@@ -5,21 +5,21 @@ import { Person } from '../types/person.model';
 
 @Injectable()
 export class DataService {
-  url = 'assets/json/seatmap.json';
+  private url = 'assets/json/seatmap.json';
   // activePerson: string;
   public activePerson = new BehaviorSubject<Person>(null);
 
-  constructor(private http: HttpClient) {}
+  public constructor(private http: HttpClient) {}
 
-  getData() {
+  public getData() {
     return this.http.get(this.url);
   }
 
-  getActivePerson() {
+  public getActivePerson() {
     return this.activePerson;
   }
 
-  setActivePerson(person) {
+  public setActivePerson(person) {
     this.activePerson.next(person);
   }
 }

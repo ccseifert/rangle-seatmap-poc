@@ -6,13 +6,13 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() private notify: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {}
+  public constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit() {}
 
-  showSearch() {
+  public showSearch() {
     this.notify.emit(true);
   }
 }
