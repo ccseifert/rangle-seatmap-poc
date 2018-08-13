@@ -26,7 +26,8 @@
           "instance-field",
           "static-method",
           "instance-method"
-        ]
+        ],
+        "alphabetize": true
       }
     ],
     "no-arg": true,

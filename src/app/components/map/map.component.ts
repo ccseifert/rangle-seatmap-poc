@@ -12,23 +12,31 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  private activePerson: Person;
+  private imageHeight: number;
+  private imageScale = 0.785;
+  private imageUrl: string;
+  private imageWidth = 1000;
+  private map: Map;
+  private mapData: Map[];
+  private mapScale: number;
   private peopleData: Person[];
   private seatData: Seat[];
-  private mapData: Map[];
-  private activePerson: Person;
-  private map: Map;
-  private imageUrl: string;
-  private imageScale = 0.785;
-  private imageWidth = 1000;
-  private imageHeight: number;
-  private mapScale: number;
   private showPerson = false;
+
+  private closePerson() {
+    this.dataService.setActivePerson(null);
+  }
 
   public constructor(
     private dataService: DataService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  private getPerson(id: string) {
+    return this.peopleData.find(person => person.id === id);
+  }
 
   public ngOnInit() {
     // get map info from json file
@@ -58,12 +66,13 @@ export class MapComponent implements OnInit {
     });
   }
 
-  private setPersonFromParams() {
-    // if there is a seat in the query string, set the person
-    const paramsId = this.route.snapshot.queryParams.seat;
-    if (paramsId) {
-      this.setPerson(paramsId);
-    }
+  private onNotify(id: string) {
+    this.setPerson(id);
+  }
+
+  private setImageHeight() {
+    // set dimensions based on map image width
+    this.imageHeight = this.imageWidth * this.imageScale;
   }
 
   private setMap() {
@@ -80,30 +89,19 @@ export class MapComponent implements OnInit {
     const mapFilename = this.map.file;
     this.imageUrl = environment.imagePath + mapFilename;
   }
-
-  private setImageHeight() {
-    // set dimensions based on map image width
-    this.imageHeight = this.imageWidth * this.imageScale;
-  }
-
   private setMapScale() {
     this.mapScale = this.imageWidth / 1000;
   }
-
-  private getPerson(id: string) {
-    return this.peopleData.find(person => person.id === id);
-  }
-
   private setPerson(id: string) {
     const person = this.getPerson(id);
     this.dataService.setActivePerson(person);
   }
 
-  private onNotify(id: string) {
-    this.setPerson(id);
-  }
-
-  private closePerson() {
-    this.dataService.setActivePerson(null);
+  private setPersonFromParams() {
+    // if there is a seat in the query string, set the person
+    const paramsId = this.route.snapshot.queryParams.seat;
+    if (paramsId) {
+      this.setPerson(paramsId);
+    }
   }
 }

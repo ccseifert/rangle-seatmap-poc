@@ -16,13 +16,13 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./marker.component.css']
 })
 export class MarkerComponent implements OnInit {
-  @Input() private seat: Seat;
-  @Input() private person: Person;
-  @Input() private mapScale: number;
-  @Output() private notify: EventEmitter<string> = new EventEmitter<string>();
-  private markerRadius = 18;
   private activePerson: Person;
+  @Input() private mapScale: number;
   private markerActive = false;
+  private markerRadius = 18;
+  @Output() private notify: EventEmitter<string> = new EventEmitter<string>();
+  @Input() private person: Person;
+  @Input() private seat: Seat;
 
   public constructor(private dataService: DataService) {}
 

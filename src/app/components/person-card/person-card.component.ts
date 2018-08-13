@@ -18,14 +18,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PersonCardComponent implements OnInit, OnDestroy {
   // @Input() person: Person;
-  private person: Person;
   // @Input() map: Map;
+  private _map = new BehaviorSubject<Map>(null);
   @Input() private mapScale: number;
   @Output() private notify: EventEmitter<string> = new EventEmitter<string>();
+  private person: Person;
 
   public constructor(private dataService: DataService) {}
-
-  private _map = new BehaviorSubject<Map>(null);
 
   // change data to use getter and setter
   @Input()
@@ -37,6 +36,14 @@ export class PersonCardComponent implements OnInit, OnDestroy {
   private get map() {
     // get the latest value from _data BehaviorSubject
     return this._map.getValue();
+  }
+
+  private closePerson() {
+    this.notify.emit();
+  }
+
+  public ngOnDestroy() {
+    this._map.unsubscribe();
   }
 
   public ngOnInit() {
@@ -53,13 +60,5 @@ export class PersonCardComponent implements OnInit, OnDestroy {
     this.dataService.getActivePerson().subscribe(data => {
       this.person = data;
     });
-  }
-
-  public ngOnDestroy() {
-    this._map.unsubscribe();
-  }
-
-  private closePerson() {
-    this.notify.emit();
   }
 }
