@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { globals } from '../../globals';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-image',
@@ -8,7 +8,7 @@ import { globals } from '../../globals';
 })
 export class UserImageComponent implements OnInit {
   @Input() image: string;
-  imagePath = globals.imagePath;
+  imagePath = environment.imagePath;
 
   constructor() {}
 

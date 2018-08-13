@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Person } from '../../types/person.model';
-import { globals } from '../../globals';
+import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
   peopleData: Person[];
   showSearch = false;
-  imagePath = globals.imagePath;
+  imagePath = environment.imagePath;
   searchText: string;
 
   constructor(private dataService: DataService, private router: Router) {}

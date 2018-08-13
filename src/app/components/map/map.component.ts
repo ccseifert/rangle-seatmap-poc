@@ -4,7 +4,7 @@ import { Person } from '../../types/person.model';
 import { Seat } from '../../types/seat.model';
 import { Map } from '../../types/map.model';
 import { Router, ActivatedRoute } from '@angular/router';
-import { globals } from '../../globals';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -78,7 +78,7 @@ export class MapComponent implements OnInit {
   setMapFile() {
     // set map image
     const mapFilename = this.map.file;
-    this.imageUrl = globals.imagePath + mapFilename;
+    this.imageUrl = environment.imagePath + mapFilename;
   }
 
   setImageHeight() {
