@@ -14,7 +14,7 @@
 
     <div id="search-person">
       <div class="person" *ngFor="let person of peopleData">
-        <a style="cursor: pointer;" (click)="selectPerson(person)">
+        <a (click)="selectPerson(person)">
           <app-user-image [image]="person.image"></app-user-image> {{ person.firstname }} {{ person.lastname }}
         </a>
       </div>
