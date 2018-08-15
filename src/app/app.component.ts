@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SearchComponent } from './components/search/search.component';
 
 @Component({
@@ -6,12 +6,8 @@ import { SearchComponent } from './components/search/search.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   @ViewChild(SearchComponent) private search: SearchComponent;
-
-  public constructor() {}
-
-  public ngOnInit() {}
 
   private onNotify() {
     this.search.showSearch = true;
