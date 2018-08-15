@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   private imagePath = environment.imagePath;
   private peopleData: Person[];
   private searchText: string;
-  private showSearch = false;
+  public showSearch = false;
 
   // close search box
   private closeSearch() {
