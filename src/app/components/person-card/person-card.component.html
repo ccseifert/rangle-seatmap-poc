@@ -1,16 +1,15 @@
 
-<div
-  *ngIf="map"
-  #thisPerson
-  class="person"
-  [ngStyle]="{
-    'top.px': map.personCardY,
-    'left.px': map.personCardX,
-    'height.px': map.personCardHeight,
-    'width.px': map.personCardWidth
-  }">
+<div  *ngIf="map"
+      #thisPerson
+      class="person"
+      [ngStyle]="{
+        'top.px': map.personCardY,
+        'left.px': map.personCardX,
+        'height.px': map.personCardHeight,
+        'width.px': map.personCardWidth
+      }">
   <app-user-image [image]="person.image"></app-user-image>
-  <!-- width="{{ imageDefaultWidth / mapScale }}" -->
+
   <div class="details">
     <h1>{{ person.firstname }} {{ person.lastname }}</h1>
     <h2>{{ person.title }}</h2>

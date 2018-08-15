@@ -1,27 +1,31 @@
-<div
-  id="search-container"
-  *ngIf="showSearch"
-  >
+<div  *ngIf="showSearch"
+      id="search-container">
 
   <!-- Overlay content -->
   <div id="search-box">
     <div id="search-header">
       <h1>Search</h1>
       <div class="search-input">
-        <input type="text" [(ngModel)]="searchText" (ngModelChange)="filterPeople()" placeholder="Search for a Rangler">
+        <input  type="text"
+                [(ngModel)]="searchText"
+                (ngModelChange)="filterPeople()"
+                placeholder="Search for a Rangler">
       </div>
     </div>
 
     <div id="search-person">
-      <div class="person" *ngFor="let person of peopleData">
+      <div  *ngFor="let person of peopleData"
+            class="person">
         <a (click)="selectPerson(person)">
-          <app-user-image [image]="person.image"></app-user-image> {{ person.firstname }} {{ person.lastname }}
+          <app-user-image [image]="person.image"></app-user-image>
+          {{ person.firstname }} {{ person.lastname }}
         </a>
       </div>
     </div>
 
-    <div id="searchClose" (click)="closeSearch()">X</div>
-
+    <div  id="searchClose"
+          (click)="closeSearch()">
+          X
+    </div>
   </div>
-
 </div>

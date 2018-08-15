@@ -1,12 +1,11 @@
-<div
-  class="marker"
-  (mouseenter)="onMouseEnter(person.id, $event)"
-  [class.active]="markerActive"
-  [ngStyle]="{
-    'top.px': (seat.y * mapScale),
-    'left.px': (seat.x * mapScale),
-    'height.px': (markerRadius * mapScale),
-    'width.px': (markerRadius * mapScale)
-  }">
+<div  class="marker"
+      (mouseenter)="onMouseEnter(person.id, $event)"
+      [class.active]="markerActive"
+      [ngStyle]="{
+        'top.px': (seat.y * mapScale),
+        'left.px': (seat.x * mapScale),
+        'height.px': (markerRadius * mapScale),
+        'width.px': (markerRadius * mapScale)
+      }">
   <span>{{ person.id | slice:1 }}</span>
 </div>

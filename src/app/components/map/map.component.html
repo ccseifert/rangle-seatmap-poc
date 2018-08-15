@@ -1,16 +1,17 @@
 <div id="map">
-  <img src="{{ imageUrl }}" alt="" height="{{ imageHeight }}" width="{{ imageWidth }}">
-  <app-marker
-    *ngFor="let seat of seatData"
-    [seat]="seat"
-    [person]="getPerson(seat.id)"
-    [mapScale]="mapScale"
-    (notify)="onNotify($event)"
-  ></app-marker>
-  <app-person-card
-    *ngIf="showPerson"
-    [mapScale]="mapScale"
-    [map]="map"
-    (notify)="closePerson()"
-  ></app-person-card>
+  <img  src="{{ imageUrl }}"
+        alt="map"
+        height="{{ imageHeight }}"
+        width="{{ imageWidth }}">
+  <app-marker *ngFor="let seat of seatData"
+              [seat]="seat"
+              [person]="getPerson(seat.id)"
+              [mapScale]="mapScale"
+              (notify)="onNotify($event)">
+  </app-marker>
+  <app-person-card  *ngIf="showPerson"
+                    [mapScale]="mapScale"
+                    [map]="map"
+                    (notify)="closePerson()">
+  </app-person-card>
 </div>
